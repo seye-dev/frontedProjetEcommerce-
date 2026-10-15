@@ -1,0 +1,41 @@
+<!-- Start Hero Section -->
+			<div class="hero">
+				<div class="container">
+					<div class="row justify-content-between">
+						<div class="col-lg-5">
+							<div class="intro-excerpt">
+                                
+								<h1>
+									@if (title1() ){
+									{{title1()}}
+									}
+									@if (title2() ){
+									 <span clsas="d-block">{{title2()}}</span>
+									}
+									</h1>
+                                
+                                @if (description() ){
+                                <p class="mb-4">{{description()}}</p>
+                                }
+                                
+								<p>
+                                    @if(btnText1() && btnUrl1()) {
+                                    <a href="{{btnUrl1()}}" class="btn btn-secondary me-2">{{btnText1()}}</a>
+                                    }
+                                    @if(btnText2() && btnUrl2()) {
+                                    <a href="{{btnUrl2()}}" class="btn btn-white-outline">{{btnText2()}}</a>
+                                    }
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							<div class="hero-img-wrap">
+                               @if (imageUrl() ){
+                                <img src="{{imageUrl()}}" class="img-fluid">
+                                }
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- End Hero Section -->

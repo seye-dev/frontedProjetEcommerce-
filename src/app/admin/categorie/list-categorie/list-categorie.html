@@ -1,0 +1,61 @@
+
+  <div class="pagetitle">
+      <h1>Data Tables</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
+          <li class="breadcrumb-item">Nouveau</li>
+          <li class="breadcrumb-item active">Liste</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Liste des lunettes</h5>
+             
+              @if (categories().length === 0) {
+
+              <p>Aucun projet trouvé.</p>
+
+            } @else {
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                     <th>Libelle</th>
+                    <th>Slug</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    
+                @for (item of categories(); track $index) {
+                  <tr>
+                    <td>{{item.name}}</td>
+                    <td>{{item.slug}}</td>
+                    <td>
+                      <button type="button"class="btn btn-warning btn-sm me-2"(click)="modifierCategorie(item.id)">
+                        Modifier
+                      </button>
+                      <button type="button"class="btn btn-danger btn-sm" (click)="supprimerCategorie(item.id)">
+                        Supprimer
+                      </button>
+                    </td>
+                  </tr>
+                }
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+            }
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>

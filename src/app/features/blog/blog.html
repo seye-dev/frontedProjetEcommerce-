@@ -1,0 +1,38 @@
+<app-header
+  [title1]="header.title1"
+  [description]="header.description"
+  [imageUrl]="header.imageUrl"
+  [btnText1]="header.btnText1"
+  [btnUrl1]="header.btnUrl1"
+  [btnText2]="header.btnText2"
+  [btnUrl2]="header.btnUrl2"></app-header>
+
+	<!-- Start Blog Section -->
+		<div class="blog-section">
+			<div class="container">
+				
+				<div class="row">
+            @for (item of product1; track $index) {
+                    <div class="col-12 col-sm-6 col-md-4 mb-5">
+                        <app-blog-item
+                            [title]="item.title"
+                            [description]="item.description"
+                            [imageUrl]="item.imageUrl"
+                            [linkUrl]="item.linkUrl"
+                        ></app-blog-item>
+                    </div>
+                }
+            @for (item of product2; track $index) {
+                    <div class="col-12 col-sm-6 col-md-4 mb-5">
+                        <app-blog-item
+                            [title]="item.title"
+                            [description]="item.description"
+                            [imageUrl]="item.imageUrl"
+                            [linkUrl]="item.linkUrl"
+                        ></app-blog-item>
+                    </div>
+                }
+            </div>
+			</div>
+		</div>
+		<!-- End Blog Section -->	
