@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Header } from '../../shared/header/header';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ProductService } from '../../core/service/product-service';
+import { Product } from '../../core/model/modelProduct';
+import { PanierService } from '../../core/service/panier';
 
 @Component({
   imports: [Header],
@@ -8,13 +12,58 @@ import { Header } from '../../shared/header/header';
   templateUrl: './detail-product.html',
 })
 export class DetailProduct {
+
   header={
-    title1:"Blog",
-    description:"  Découvrez nos produits et services de qualité. Nous proposons une large gamme de produits et services pour répondre à tous vos besoins. Parcourez notre boutique en ligne et profitez de nos offres exclusives.",
-    imageUrl:"images/post-1.jpg",
-    btnText1:"Voir produits",
-    btnUrl1:"/boutique",
-    btnText2:"ajouter au panier",
-    btnUrl2:"/panier"
+    title1:"Deatail produit",
+    
   }
+
+  private route = inject(ActivatedRoute);
+  private productService = inject(ProductService);
+  private panierService = inject(PanierService);
+
+  product = signal<Product|null>(null);
+  loading = true;
+  errorMessage = '';
+
+  ngOnInit(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    if (!Number.isInteger(id) || id <= 0) {
+      this.errorMessage = 'Identifiant de produit invalide.';
+      this.loading = false;
+      return;
+    }
+
+    this.productService.getProduct(id).subscribe({
+      next: (response) => {
+        //stocker le produit dans le singal product
+        this.product.set(response.product);
+
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Erreur détail produit :', err);
+        this.errorMessage =
+          'Impossible de trouver ce produit.';
+        this.loading = false;
+      }
+    });
+  }
+
+
+//gestion des paniers
+messagePanier = '';
+ajouterAuPanier(produit: any): void {
+  const resultat = this.panierService.ajouterProduit(produit);
+
+  this.messagePanier = resultat
+    ? `${produit.name} ajouté au panier !`
+    : 'Stock insuffisant ou quantité invalide.';
+}
+
+
+
+
+
 }

@@ -8,6 +8,7 @@ import { finalize, tap } from 'rxjs';
 @Service()
 
 export class AuthService {
+
   private apiUrl = API_URL;
   private http = inject(HttpClient);
   private session = inject(SessionStore);
@@ -42,16 +43,31 @@ export class AuthService {
       .post<AuthResponse>(this.apiUrl + path, data)
       .pipe(tap((response) => this.session.setSession(response)));
   }
-
+//recuperation des utilisateur par le bien de la fonction me
   me() {
     return this.http.get<User>(this.apiUrl + '/me');
   }
+  getProfile() {
+    return this.http.get<User>(this.apiUrl + '/me');
+  }
 
+  //deconnexion des utilisateurs
   logout() {
     return this.http
       .post<void>(this.apiUrl + '/logout',{})
       .pipe(finalize(() => this.session.clear()));
   }
+
+  clearSession(): void {
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+}
+
+isLoggedIn(): boolean {
+  return !!localStorage.getItem('token');
+}
+
+
 
 
 }

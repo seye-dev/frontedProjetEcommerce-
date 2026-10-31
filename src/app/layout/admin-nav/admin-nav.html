@@ -206,7 +206,7 @@
               </li>
 
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="#">
+                <a class="dropdown-item d-flex align-items-center" (click)="deconnexion()">
                   <i class="bi bi-box-arrow-right"></i>
                   <span>Déconnexion</span>
                 </a>
@@ -301,6 +301,33 @@
         </li>
         <!-- End Tables Nav -->
 
+        <!--Gestion des commandes-->
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#tables-nav"
+            data-bs-toggle="collapse"
+            href="#tables-nav"
+          >
+            <i class="bi bi-layout-text-window-reverse"></i><span>Gestion des Commandes</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+            <li>
+              <a routerLink="/admin/utilisateur">
+                <i class="bi bi-circle"></i><span>Nouveau </span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/admin/list-utilisateur">
+                <i class="bi bi-circle"></i><span>Liste des commandes</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- Gestion des commandes -->
+
         <li class="nav-item">
           <a class="nav-link collapsed" routerLink="/admin/profil">
             <i class="bi bi-person"></i>
@@ -310,7 +337,7 @@
         <!-- End Profile Page Nav -->
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+          <a class="nav-link collapsed" (click)="deconnexion()">
             <i class="bi bi-box-arrow-in-right"></i>
             <span>Déconnexion</span>
           </a>

@@ -1,4 +1,46 @@
-<div class="untree_co-section pt-0">
+<div class="hero">
+			<div class="container">
+				<div class="row justify-content-between align-items-center">
+					<div class="col-lg-6">
+						<div class="intro-excerpt">
+							<div class="detail-breadcrumb">Admin / Login</div>
+							<h1>Connexion a l'espace dashboard</h1>
+							<p class="mb-4">Authentifiez-vous pour acceder au back-office Furni et gerer les services, produits, articles et commandes depuis une interface locale.</p>
+							<p><a href="#login-form" class="btn btn-secondary me-2">Se connecter</a><a href="index.html" class="btn btn-white-outline">Retour au site</a></p>
+						</div>
+					</div>
+					<div class="col-lg-5">
+						<div class="dashboard-hero-card admin-hero-card">
+							<div class="dashboard-avatar">FA</div>
+							<div>
+								<div class="dashboard-label">Acces securise</div>
+								<h3>Furni Admin Access</h3>
+							</div>
+							<div class="dashboard-hero-meta">
+								<div>
+									<span>Session</span>
+									<strong>Locale</strong>
+								</div>
+								<div>
+									<span>Redirection</span>
+									<strong>Dashboard</strong>
+								</div>
+								<div>
+									<span>Modele</span>
+									<strong>Front-end</strong>
+								</div>
+							</div>
+							<div class="admin-hero-note">
+								<span class="status-pill processing">Demo access</span>
+								<p class="mb-0">Cette connexion est geree en navigateur via <code>localStorage</code>, suffisante pour maquetter un acces admin sans backend.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="untree_co-section pt-0">
 			<div class="container login-shell">
 				<div class="row g-4 align-items-stretch">
 					<div class="col-lg-6">
@@ -7,62 +49,22 @@
 							<h2>Acceder au dashboard</h2>
 							<p>Entrez les identifiants de demonstration pour ouvrir directement <code>dashboard.html</code>.</p>
 
-							@if (errorMessage) {
-							<div class="danger">
-								{{ errorMessage }}
-							</div>
-}
-
 							<div class="login-feedback" data-login-feedback></div>
 
-							<form id="login-form" [formGroup]="formGroup" (ngSubmit)="login()" class="admin-form" data-login-form>
+							<form id="login-form" class="admin-form" data-login-form [formGroup]="formGroup" (ngSubmit)="login()">
 								<div class="admin-field">
 									<label for="login-email">Email</label>
-									<input id="login-email" name="email" type="email"
-									[class.is-invalid]="formGroup.controls.email.invalid && formGroup.controls.email.touched"   
-									formControlName="email" class="form-control" placeholder="admin@furni.com" autocomplete="username">
-									@if (formGroup.controls.email.invalid && formGroup.controls.email.touched) {
-									<small class="danger">
-										@if (formGroup.controls.email.errors?.['required']) {
-											L'email est obligatoire.}
-
-										@else if (formGroup.controls.email.errors?.['email']) {
-										L'email n'est pas valide.
-										}
-
-									</small>
-								}
+									<input id="login-email" formControlName="email" type="email" class="form-control" placeholder="admin@furni.com" autocomplete="username" required>
 								</div>
 
 								<div class="admin-field">
 									<label for="login-password">Mot de passe</label>
-									<input id="login-password" name="password" type="password"
-									[class.is-invalid]="formGroup.controls.password.invalid && formGroup.controls.password.touched"
-									 formControlName="password"class="form-control" placeholder="Furni2026!" autocomplete="current-password" >
-									 	@if (
-											formGroup.controls.password.invalid &&
-											formGroup.controls.password.touched
-											) {
-
-											<small class="danger">
-
-												@if (formGroup.controls.password.errors?.['required']) {
-												Le mot de passe est obligatoire.
-												}
-
-												@else if (formGroup.controls.password.errors?.['minlength']) {
-												Le mot de passe doit contenir au moins 8 caractères.
-												}
-
-											</small>
-
-										}
-									
+									<input id="login-password" formControlName="password" type="password" class="form-control" placeholder="Furni2026!" autocomplete="current-password" required>
 								</div>
 
 								<div class="admin-form-actions">
 									<button type="submit" class="btn btn-primary">Ouvrir le dashboard</button>
-									<a href="index.html" class="btn btn-light">Annuler</a>
+									<a href="#" class="btn btn-light">Annuler</a>
 								</div>
 							</form>
 						</div>

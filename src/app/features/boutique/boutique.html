@@ -1,1 +1,35 @@
-<app-header [title1]=header.title1></app-header>
+<app-header [title1]="header.title1"></app-header>
+
+<div class="untree_co-section product-section before-footer-section">
+  <div class="container">
+    <div class="row">
+      <div class="untree_co-section product-section before-footer-section">
+        <div class="container">
+          <div class="row">
+            @for (item of products(); track item.id) {
+              <!-- Start Column 1 -->
+              <div class="col-12 col-md-4 col-lg-3 mb-5">
+                <a class="product-item text-decoration-none" [routerLink]="['/detail-product', item.id]">
+                  <img src="{{item.image_url}}" class="img-fluid product-thumbnail" />
+                  <h3 class="product-title">{{ item.name }}</h3>
+                  <strong class="product-price">{{ item.price }}F CFA</strong>
+                  <button type="button" class="btn btn-success"
+                        (click)="ajouterAuPanier(item)">
+                        Ajouter au panier
+                      </button>
+
+                  <span class="icon-cross">
+                    <img src="images/cross.svg" class="img-fluid" />
+                  </span>
+                </a>
+              </div>
+              <!-- End Column 1 -->
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End Column 1 -->

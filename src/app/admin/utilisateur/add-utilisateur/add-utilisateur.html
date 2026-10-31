@@ -4,32 +4,46 @@
       <div class="card-body">
         <h5 class="card-title">Nouveau</h5>
         <br />
+@if (messageErreur) {
+    <p class="erreur">{{ messageErreur }}</p>
+  }
+
+  @if (messageSucces) {
+    <p class="succes">{{ messageSucces }}</p>
+  }
 
         <!-- General Form Elements -->
-        <form  enctype="multipart/form-data">
+        <form  enctype="multipart/form-data" [formGroup]="formGroup" (ngSubmit)="inscription()">
           <div class="row mb-3">
             <label for="inputText" class="col-sm-2 col-form-label">Nom complet</label>
             <div class="col-sm-10">
-              <input type="text" name="libele" class="form-control" />
+              <input type="text" formControlName="name" class="form-control" />
             </div>
           </div>
           <div class="row mb-3">
             <label for="inputNumber" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-              <input class="form-control" name="mail" type="email" id="formFile" />
+              <input class="form-control" formControlName="email" type="email" id="formFile" />
             </div>
           </div>
           <div class="row mb-3">
             <label for="inputNumber" class="col-sm-2 col-form-label">Mot de passe</label>
             <div class="col-sm-10">
-              <input class="form-control" name="password" type="password" id="formFile" />
+              <input class="form-control" formControlName="password" type="password" id="formFile" />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputNumber" class="col-sm-2 col-form-label">Confirmation</label>
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="password_confirmation" type="password" id="formFile" />
             </div>
           </div>
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label">Role</label>
             <div class="col-sm-10">
-              <select class="form-select" name="role" aria-label="Default select example">
+              <select class="form-select" formControlName="role" aria-label="Default select example">
                 <option selected></option>
+                <option>Client</option>
                 <option>Gerant</option>
                 <option>Admin</option>
                 <option>client</option>
@@ -39,13 +53,13 @@
           <div class="row mb-3">
             <label for="inputNumber" class="col-sm-2 col-form-label">Telephone</label>
             <div class="col-sm-10">
-              <input type="number" name="phone" class="form-control" />
+              <input type="text" formControlName="phone" class="form-control" />
             </div>
           </div>
           <div class="row mb-3">
             <label for="inputNumber" class="col-sm-2 col-form-label">Adresse</label>
             <div class="col-sm-10">
-              <input class="form-control" name="adresse" type="email" id="formFile" />
+              <input class="form-control" formControlName="adresse" type="email" id="formFile" />
             </div>
           </div>
           <div class="row mb-3">

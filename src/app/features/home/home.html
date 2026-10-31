@@ -1,46 +1,67 @@
-<app-header [title1]="header.title1" [title2]="header.title2"[description]="header.description" [imageUrl]="header.imageUrl"[btnText1]="header.btnText1" [btnUrl1]="header.btnUrl1" [btnText2]="header.btnText2" [btnUrl2]="header.btnUrl2"></app-header>
+<app-header
+  [title1]="header.title1"
+  [title2]="header.title2"
+  [description]="header.description"
+  [imageUrl]="header.imageUrl"
+  [btnText1]="header.btnText1"
+  [btnUrl1]="header.btnUrl1"
+  [btnText2]="header.btnText2"
+  [btnUrl2]="header.btnUrl2"
+></app-header>
 <div class="product-section">
-			<div class="container">
-				<div class="row">
+  <div class="container">
+    <div class="row">
+      <!-- Start Column 1 -->
+      <div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
+        <h2 class="mb-4 section-title">Crafted with excellent material.</h2>
+        <p class="mb-4">
+          Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate
+          velit imperdiet dolor tempor tristique.
+        </p>
+        <p><a href="shop.html" class="btn">Explore</a></p>
+      </div>
+      <!-- End Column 1 -->
 
-          <!-- Start Column 1 -->
-					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
-						<h2 class="mb-4 section-title">Crafted with excellent material.</h2>
-						<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. </p>
-						<p><a href="shop.html" class="btn">Explore</a></p>
-					</div> 
-					<!-- End Column 1 -->
-
-					<!-- Start Column 2 -->
-           @for (item of product1; track $index) {
-					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-						<app-product-item [title]="item.title" [price]="item.price" [imageUrl]="item.imageUrl" [linkUrl]="item.linkUrl"></app-product-item>
-					</div> 
-          }
-					<!-- End Column 2 -->
+      <!-- Start Column 2 -->
+      @for (item of product1; track $index) {
+        <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+          <app-product-item
+            [title]="item.title"
+            [price]="item.price"
+            [imageUrl]="item.imageUrl"
+            [linkUrl]="item.linkUrl"
+          ></app-product-item>
         </div>
-			</div>
-		</div>
+      }
+      <!-- End Column 2 -->
+    </div>
+  </div>
+</div>
 
-    <!-- Start Blog Section -->
-		<div class="blog-section">
-			<div class="container">
-				<div class="row mb-5">
-					<div class="col-md-6">
-						<h2 class="section-title">Recent Blog</h2>
-					</div>
-					<div class="col-md-6 text-start text-md-end">
-						<a href="#" class="more">View All Posts</a>
-					</div>
-				</div>
+<!-- Start Blog Section -->
+<div class="blog-section">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <h2 class="section-title">Recent Blog</h2>
+      </div>
+      <div class="col-md-6 text-start text-md-end">
+        <a href="#" class="more">View All Posts</a>
+      </div>
+    </div>
 
-				<div class="row">
-          @for (item of blog; track $index) {
-          <div class="col-12 col-sm-6 col-md-4 mb-5">
-            <app-blog-item [title]="item.title" [description]="item.description" [imageUrl]="item.imageUrl" [linkUrl]="item.linkUrl"></app-blog-item>
-          </div>
-          }
+    <div class="row">
+      @for (item of blog; track $index) {
+        <div class="col-12 col-sm-6 col-md-4 mb-5">
+          <app-blog-item
+            [title]="item.title"
+            [description]="item.description"
+            [imageUrl]="item.imageUrl"
+            [linkUrl]="item.linkUrl"
+          ></app-blog-item>
         </div>
-			</div>
-		</div>
-		<!-- End Blog Section -->	
+      }
+    </div>
+  </div>
+</div>
+<!-- End Blog Section -->

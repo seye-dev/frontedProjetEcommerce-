@@ -16,8 +16,10 @@
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li class="active"><a class="nav-link" routerLink="login" routerLinkActive="active"><img src="images/user.svg" alt="Connexion admin"></a></li>
-						<li><a class="nav-link" routerLink="panier" routerLinkActive="active"><img src="images/cart.svg" alt="Panier"></a></li>
+						<li class="active"><a class="nav-link cart-link" routerLink="login" routerLinkActive="active"><img src="images/user.svg" alt="Connexion admin"></a></li>
+						<li><a class="nav-link" routerLink="panier" routerLinkActive="active"><img src="images/cart.svg" alt="Panier"><span class="cart-count" >
+        {{ panierService.panierCount() }}
+      </span></a></li>
 					</ul>
 				</div>
 			</div>

@@ -1,0 +1,68 @@
+<app-header></app-header>
+
+<div class="container py-5">
+  <h2 class="mb-4">Finaliser ma commande</h2>
+
+  @if (messageErreur) {
+    <div class="alert alert-danger">{{ messageErreur }}</div>
+  }
+
+  @if (panierService.panier().length === 0) {
+    <p>Votre panier est vide.</p>
+    <a routerLink="/boutique" class="btn btn-outline-success"> Retour à la boutique </a>
+  } @else {
+    <div class="row g-4">
+      <div class="col-md-7">
+        <form [formGroup]="formulaire" (ngSubmit)="confirmerCommande()">
+          <label class="form-label">Nom complet</label>
+          <input class="form-control mb-3" formControlName="nom_client" placeholder="Votre nom complet" />
+
+          <label class="form-label">Téléphone</label>
+          <input
+            class="form-control mb-3"
+            formControlName="telephone_client"
+            placeholder="Votre numéro de téléphone"
+          />
+
+          <label class="form-label">Adresse de livraison</label>
+          <input
+            class="form-control mb-3"
+            formControlName="shipping_address"
+            placeholder="Quartier, rue ou repère"
+          />
+
+
+          <label class="form-label">Mode de paiement</label>
+          <select class="form-select mb-4" formControlName="modePaiement">
+            <option value="livraison">Paiement à la livraison</option>
+            <option value="mobile_money">Mobile Money</option>
+          </select>
+
+          <button class="btn btn-success w-100" type="submit" [disabled]="chargement">
+            {{ chargement ? 'Enregistrement...' : 'Confirmer la commande' }}
+          </button>
+        </form>
+      </div>
+
+      <div class="col-md-5">
+        <div class="card p-4">
+          <h4>Récapitulatif</h4>
+
+          @for (item of panierService.panier(); track item.id) {
+            <div class="d-flex justify-content-between gap-3 my-2">
+              <span>{{ item.name }} × {{ item.quantity }}</span>
+              <span> {{ item.price * item.quantity}} F CFA </span>
+            </div>
+          }
+
+          <hr />
+
+          <div class="d-flex justify-content-between fw-bold">
+            <span>Total</span>
+            <span> {{ panierService.total() }} F CFA </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
